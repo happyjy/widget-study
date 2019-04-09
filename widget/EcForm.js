@@ -20,14 +20,20 @@ var EcForm = class {
                         </ul>
                       </div>`;
                           
-                          // <ul>
-                          //   <li style="padding-left:10px">AAAAAA</li>
-                          //   <li>BBBBBB</li>
-                          // </ul>
-                          // <ul>
-                          //   <li style="padding-left:10px">AAAAAA</li>
-                          //   <li>BBBBBB</li>
-                          // </ul>
+                    //   `<div style="border: 2px solid black;">
+                    //   <ul id="example" style="">
+                    //     <li id="form">
+                    //       <ul>
+                    //         <li style="padding-left:10px">AAAAAA</li>
+                    //         <li>BBBBBB</li>
+                    //       </ul>
+                    //       <ul>
+                    //         <li style="padding-left:10px">AAAAAA</li>
+                    //         <li>BBBBBB</li>
+                    //       </ul>
+                    //     </li>
+                    //   </ul>
+                    // </div>`
                       
                       
       //#refactoring

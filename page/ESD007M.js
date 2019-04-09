@@ -18,12 +18,17 @@ var esd006m = new EcInventoryPage({
       var form = define("EcForm", "form", "form");
 
       var input1 = define("EcInput", "input1", "input1")
-          .value('contents input 1')
-          .end();
+                    .value('contents input 1')
+                    .end();
       
       var input2 = define("EcInput", "input2", "input2")
-          .value('contents input 2')
-          .end();
+                    .value('contents input 2')
+                    .end();
+
+      var checkBox = define("EcCheckBox", "checkBox", "checkBox")
+                      .label(["check1", "check2"])
+                      .value(["checkValue1", "checkValue2"])
+                      .end();
 
 
       //# form에 add 로 widget을 추가 하는 방법
@@ -35,7 +40,7 @@ var esd006m = new EcInventoryPage({
       //### 요구 조건 2
       //* define에서 만드는 것이 아니라 g.form()해서 form전용 객체를 만들어 그 객체에 add를 해서 form을 구성해야 할것같아요.
       //* form.add().add()....end()했을때 form 자체가 add로 추가한 Object를 반환하도록 
-      contents.push(form.add(input1).add(input2).end());
+      contents.push(form.add(input1).add(input2).add(checkBox).end());
         // var userData1 = define("EcInput", "input2", "input2")
         //     .value(2)
         //     .handler({

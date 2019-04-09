@@ -27,8 +27,18 @@ function define(controlType, id, name){
     };
 
     return {
+        label: function(label){
+          obj.label = label;
+          return this;
+        },
+
         value: function(value){
-            obj.value = value;
+          //TODO 
+            if(Array.isArray(value)){
+              obj.values = value
+            }else{
+              obj.value = value;
+            }
             return this;
         },
 
