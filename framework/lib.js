@@ -1,13 +1,11 @@
-
-
-var Class = function(parent, prototype){
-  var fn = function(){
+var Class = function (parent, prototype) {
+  var fn = function () {
     this.init.apply(this, arguments);
   };
-  if(parent){
+  if (parent) {
     fn.prototype = new parent();
   }
-  for(var p in prototype){
+  for (var p in prototype) {
     fn.prototype[p] = prototype[p];
   }
   return fn;
@@ -19,7 +17,7 @@ var widget = window.widget = {
   button: {}
 };
 
-function define(controlType, id, name){
+function define(controlType, id, name) {
   var obj = {
     controlType: controlType,
     id: id,
@@ -30,29 +28,29 @@ function define(controlType, id, name){
   return {
 
 
-    add: function(item){
+    add: function (item) {
       //# obj.item
       //- form에 추가할 widget들을 array 형태로 담는다. 
 
       //TODO refactoring 대상
-      if(!obj.items){
+      if (!obj.items) {
         obj.items = [];
       }
       obj.items.push(item)
       // !obj.item && obj.item.push(item);
       return this;
     },
-    
-    label: function(labels){
+
+    label: function (labels) {
       this.setAttr("label", labels);
       return this;
     },
 
-    value: function(value){
+    value: function (value) {
       // adata = $.isArray(value) ? adata : [adata];
-      if($.isArray(value)){
-        this.setAttr("value", value);      
-      }else{
+      if ($.isArray(value)) {
+        this.setAttr("value", value);
+      } else {
         obj.value = value;
       }
       return this;
@@ -63,16 +61,16 @@ function define(controlType, id, name){
     //   return this;
     // },
 
-    setAttr: function(aname, adata){
-      if(obj.data.length === 0){
+    setAttr: function (aname, adata) {
+      if (obj.data.length === 0) {
         obj.data.push({});
       }
 
-      for(var i=0, len = adata.length, value; i<len; i++){
+      for (var i = 0, len = adata.length, value; i < len; i++) {
         value = adata[i];
-        if(obj.data[i]){
+        if (obj.data[i]) {
           obj.data[i][aname] = value;
-        }else{
+        } else {
           var a = {};
           a[aname] = value;
           obj.data.push(a);
@@ -80,19 +78,19 @@ function define(controlType, id, name){
       }
     },
 
-    handler: function(handler){
+    handler: function (handler) {
       obj.handler = handler;
       return this;
     },
 
-    end: function(){
+    end: function () {
       return obj;
     }
   };
 }
 
-function create(items, $parent){
-  items.forEach(function(item){
+function create(items, $parent) {
+  items.forEach(function (item) {
     var control = new window[item.controlType](item);
     control.render($parent);
   });

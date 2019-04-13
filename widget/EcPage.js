@@ -1,7 +1,6 @@
-
 var EcPage = class {
 
-  constructor(options){
+  constructor(options) {
     $.extend(this, options);
     // # Study delegator
     // * delegator를 생성해서 this.evetns에 담고 
@@ -17,11 +16,11 @@ var EcPage = class {
     });
   }
 
-  init(){
+  init() {
     this.render();
   }
 
-  render(){
+  render() {
     this.createHeader();
     this.createContents();
     this.createFooter();
@@ -29,25 +28,25 @@ var EcPage = class {
     this.onLoadComplete();
   }
 
-  createHeader(){
+  createHeader() {
     var header = [];
-    this._onInitHeader(header);   // STUDY THIS 1. EcInventoryPage의 _onInitHeader를 가르킴
+    this._onInitHeader(header); // STUDY THIS 1. EcInventoryPage의 _onInitHeader를 가르킴
 
     this.header = new EcHeader(header);
     this.header.delegator = this.events;
     this.header.render();
   }
 
-  createContents(){
+  createContents() {
     var contents = [];
     this._onInitContents(contents);
-    
+
     this.contents = new EcContents(contents);
     this.contents.delegator = this.events;
     this.contents.render();
   }
 
-  createFooter(){
+  createFooter() {
     var footer = [];
     this._onInitFooter(footer);
 
@@ -56,30 +55,29 @@ var EcPage = class {
     this.footer.render();
   }
 
-  _onInitHeader(header){
-    this.onInitHeader(header);  //STUDY THIS 3. ESD007M.js의 onInitHeader를 가르킴 
+  _onInitHeader(header) {
+    this.onInitHeader(header); //STUDY THIS 3. ESD007M.js의 onInitHeader를 가르킴 
   }
-  
-  _onInitContents(contents){
+
+  _onInitContents(contents) {
     this.onIinitContents(contents);
   }
 
-  _onInitFooter(footer){
+  _onInitFooter(footer) {
     this.onInitFooter(footer);
   }
 }
 
-var EcInventoryPage = class extends EcPage{
+var EcInventoryPage = class extends EcPage {
 
-  constructor(options){
+  constructor(options) {
     super(options);
   }
 
-  _onInitHeader(header){
+  _onInitHeader(header) {
     super._onInitHeader(header) //STUDY THIS 2. EcPage의 _onInitHeader를 가르킴
 
     var userData1 = define("EcButton", "btn1", "btn1").end();
     header.push(userData1);
   }
 };
-
