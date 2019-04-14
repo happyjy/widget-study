@@ -7,6 +7,8 @@
 * 과제3 form의 Serialize 생성
 * 과제3.1 저장click -> form안에 있는 데이터 serialize로 저장 
 		  다시작성click-> 원복
+* 과제4 checkbox 클릭시 value -> input box에 입력하기
+
 # 참고 
 * onKeydomhanlder 
 ecount.page.js

@@ -26,15 +26,20 @@ var EcForm = class {
     //   </ul>
     // </div>`;
 
+
+    this.events = new Delegator();
+    this.events.register("button.click", e => {
+      this.delegator.triggerEvent("button.click", e);
+    })
+
     //#refactoring
     //EcContainer에 있는 것과같음 공통으로 빼는 것을 생각해 볼 필요 가 있음
-
     this.itemList = [];
     options.items.forEach(item => {
       item.containerName = options.containerName;
       item.delegator = this.events;
       var control = new window[item.controlType](item);
-      // control.render($("#" + options.containerName));
+      control.render();
       this.itemList.push(control);
     });
 
@@ -55,16 +60,24 @@ var EcForm = class {
         => checkbox일때 item.template은 배열인데 ((widget))에 잘 replace된다.
        */
       rows += row.replace("((widget))", item.template);
+      this.$el.change( e=> {console.log("123")});
     });
     form.append(rows);
     $parent.append(this.$el);
 
     this.$el.on("click", e => {
-      this.delegator.triggerEvent("button.click", {
+      this.delegator.triggerEvent("form.click", {
         id: this.id,
         containerName: this.containerName,
-        __self: thisw
+        __self: this
       });
     });
+  }
+
+  getControl(id) {
+    var control = this.itemList.filter(function (_) {
+      return _.id == id
+    });
+    return control.length > 0 ? control[0] : null;
   }
 };

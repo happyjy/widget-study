@@ -4,10 +4,9 @@ var EcContainer = class {
 
     this.events = new Delegator();
     this.events.register("button.click", e => {
-      debugger;
-      this.delegator.triggerEvent("button.click", e)
+      this.delegator.triggerEvent("button.click", e);
     });
-
+    
     options.forEach(item => {
       item.containerName = options.containerName;
       item.delegator = this.events;
@@ -16,9 +15,8 @@ var EcContainer = class {
       this.itemList.push(control);
     });
   }
-
+  
   render() {
-
   }
 
   //#TODO 고민필요

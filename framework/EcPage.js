@@ -10,7 +10,6 @@ var EcPage = class {
 
     this.init();
     this.events.register("button.click", e => {
-      debugger;
       var command = ["on", e.containerName, e.id].join("").toLowerCase();
       this[command] && this[command](e);
     });
@@ -31,9 +30,9 @@ var EcPage = class {
   createHeader() {
     var header = [];
     this._onInitHeader(header); // STUDY THIS 1. EcInventoryPage의 _onInitHeader를 가르킴
-
+    
     this.header = new EcHeader(header);
-    this.header.delegator = this.events;
+    this.header.delegator = this.events;    //STUDY [instance에 property를 추가하고]
     this.header.render();
   }
 
